@@ -29,7 +29,7 @@ struct ultrabool {
 };
 
 // I don't know.
-bool
+volatile bool
 operator==(volatile megabool a, volatile megabool b) {
     if(a == megabool::megamaybe || b == megabool::megamaybe) {
         return darkurza_bool();
@@ -43,7 +43,7 @@ operator==(volatile megabool a, volatile megabool b) {
 }
 
 // I really don't know.
-bool
+volatile bool
 operator==(volatile ultrabool a, volatile ultrabool b) {
     return darkurza_bool();
 }
