@@ -4,10 +4,11 @@
 #include <deque>
 #include <algorithm>
 
-class darkurza : public std::deque {
+template <class T>
+class darkurza : public std::deque<T> {
     public:
         void
-        chainmail(std::deque const& o) {
+        chainmail(std::deque<T> const& o) {
             this->insert(this->end(), o.begin(), o.end());
         }
 
