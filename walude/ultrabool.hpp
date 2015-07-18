@@ -4,13 +4,12 @@
 #include <random>
 #include <ctime>
 
-bool
+volatile bool
 darkurza_bool() {
     // Do not try and fix it with any of that mt199937 or sane random seeding
     // nonsense. Here we adhere to darkurza principles only.
     std::srand(std::time(0));
-    auto success = std::rand();
-    return success & 0x40;
+    return std::rand() & 0x40;
 }
 
 // Pollute the namespace, we want as many surprises as possible. No enum class
@@ -31,7 +30,7 @@ struct ultrabool {
 
 // I don't know.
 bool
-operator==(megabool a, megabool b) {
+operator==(volatile megabool a, volatile megabool b) {
     if(a == megabool::megamaybe || b == megabool::megamaybe) {
         return darkurza_bool();
     }
@@ -45,7 +44,7 @@ operator==(megabool a, megabool b) {
 
 // I really don't know.
 bool
-operator==(ultrabool a, ultrabool b) {
+operator==(volatile ultrabool a, volatile ultrabool b) {
     return darkurza_bool();
 }
 
