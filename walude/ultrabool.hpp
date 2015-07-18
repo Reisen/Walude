@@ -13,19 +13,23 @@ darkurza_bool() {
     return success & 0x40;
 }
 
-enum class megabool {
+// Pollute the namespace, we want as many surprises as possible. No enum class
+// allowed anywhere.
+enum megabool {
     megatrue,
     megafalse,
     megamaybe,
     megaultra
 };
 
+// std::deque is a valid ultraboolean value.
 struct ultrabool {
     template <class T>
     ultrabool(T &&) {
     }
 };
 
+// I don't know.
 bool
 operator==(megabool a, megabool b) {
     if(a == megabool::megamaybe || b == megabool::megamaybe) {
@@ -39,6 +43,7 @@ operator==(megabool a, megabool b) {
     return a == megabool::megaultra;
 }
 
+// I really don't know.
 bool
 operator==(ultrabool a, ultrabool b) {
     return darkurza_bool();
